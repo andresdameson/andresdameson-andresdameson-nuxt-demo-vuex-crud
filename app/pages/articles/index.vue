@@ -15,6 +15,10 @@
         >
           <h3>{{ article.title }}</h3>
           <p>{{ article.content }}</p>
+          <div class="article-links">
+            <nuxt-link v-bind:to="{name: 'articles-id', params:{id: article.id}}" class="button--green"> View </nuxt-link>
+            <a class="button--grey"> Delete </a>
+          </div>
         </article>
       </div>
     </div>
@@ -60,7 +64,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   min-height: 100vh;
   display: flex;
@@ -97,9 +101,15 @@ export default {
     text-align: left;
     vertical-align: top;
   }
-    article h3{
+    article h3 {
       margin-bottom: 10px;
     }
+    .article-links {
+      margin-top: 15px;
+    }
+      .article-links a {
+        cursor: pointer;
+      }
 
 .back {
   position: absolute;
