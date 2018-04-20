@@ -4,18 +4,10 @@
       <h1 class="title">
         <app-logo/> NUXT demo for vuex-CRUD
       </h1>
-      <h2 class="subtitle">
-        Articles
-      </h2>
 
-      <div class="article-container">
-        <article
-          v-for="article in articleList"
-          v-bind:key="article.id"
-        >
-          <h3>{{ article.title }}</h3>
-          <p>{{ article.content }}</p>
-        </article>
+      <div class="links">
+        <nuxt-link class="button--green" v-bind:to="{name: 'articles'}"> List articles </nuxt-link>
+        <a class="button--grey"> Add article </a>
       </div>
     </div>
   </section>
@@ -28,34 +20,8 @@ import AppLogo from '~/components/AppLogo.vue'
 export default {
   components: {
     AppLogo
-  },
-  computed: {
-    ...mapGetters('articles', {
-      articleList: 'list'
-    }),
-    ...mapState([
-      'route', // vuex-router-sync
-    ]),
-  },
-
-  watch: {
-    $route: 'fetchData',
-  },
-
-  methods: {
-    ...mapActions('articles', {
-      fetchArticles: 'fetchList'
-    }),
-
-    fetchData() {
-      return this.fetchArticles();
-    }
-  },
-
-  async fetch ({ store }) {
-    await store.dispatch('articles/fetchList')
   }
-};
+}
 </script>
 
 <style>
@@ -77,29 +43,8 @@ export default {
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.article-container {
-  text-align: center;
-}
-  article {
-    display: inline-block;
-    width: 250px;
-    padding: 10px;
-    text-align: left;
-    vertical-align: top;
-  }
-    article h3{
-      margin-bottom: 10px;
-    }
-
 .links {
   padding-top: 15px;
+  cursor: pointer;
 }
 </style>

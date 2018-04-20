@@ -1,22 +1,25 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
       <h1 class="title">
-        nuxt-demo-vuex-crud
+        <app-logo/> NUXT demo for vuex-CRUD
       </h1>
       <h2 class="subtitle">
         Articles
       </h2>
 
-      <article
-        v-for="article in articleList"
-        v-bind:key="article.id"
-      >
-        <h1>{{ article.title }}</h1>
-        <p>{{ article.content }}</p>
-      </article>
+      <div class="article-container">
+        <article
+          v-for="article in articleList"
+          v-bind:key="article.id"
+        >
+          <h3>{{ article.title }}</h3>
+          <p>{{ article.content }}</p>
+        </article>
+      </div>
     </div>
+
+    <nuxt-link class="button--green back" v-bind:to="{name: 'index'}">Back </nuxt-link>
   </section>
 </template>
 
@@ -70,7 +73,8 @@ export default {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  margin-bottom: 45px;
+  font-size: 40px;
   color: #35495e;
   letter-spacing: 1px;
 }
@@ -83,7 +87,23 @@ export default {
   padding-bottom: 15px;
 }
 
-.links {
-  padding-top: 15px;
+.article-container {
+  text-align: center;
+}
+  article {
+    display: inline-block;
+    width: 250px;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+    article h3{
+      margin-bottom: 10px;
+    }
+
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 </style>
