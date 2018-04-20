@@ -12,6 +12,8 @@
   display: inline-block;
   animation: turn 2s linear forwards 1s;
   transform: rotateX(180deg);
+  transform: scale(0.5);
+  margin-bottom: -45px;
   position: relative;
   overflow: hidden;
   height: 180px;
@@ -62,6 +64,7 @@
 @keyframes turn {
   100% {
     transform: rotateX(0deg);
+    transform: scale(0.5);
   }
 }
 
