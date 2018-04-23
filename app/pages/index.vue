@@ -7,7 +7,7 @@
 
       <div class="links">
         <nuxt-link class="button--green" v-bind:to="{name: 'articles'}"> List articles </nuxt-link>
-        <a class="button--grey"> Add article </a>
+        <nuxt-link class="button--grey" v-bind:to="{name: 'articles-add'}"> Add article </nuxt-link>
       </div>
     </div>
   </section>
