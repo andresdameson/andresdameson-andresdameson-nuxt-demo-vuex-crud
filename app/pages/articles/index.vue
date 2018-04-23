@@ -17,7 +17,7 @@
           <p>{{ article.content }}</p>
           <div class="article-links">
             <nuxt-link v-bind:to="{name: 'articles-id', params:{id: article.id}}" class="button--green"> View </nuxt-link>
-            <a class="button--grey"> Delete </a>
+            <a @click="destroyArticle({id: article.id})" class="button--grey"> Delete </a>
           </div>
         </article>
       </div>
@@ -50,9 +50,9 @@ export default {
 
   methods: {
     ...mapActions('articles', {
-      fetchArticles: 'fetchList'
+      fetchArticles: 'fetchList',
+      destroyArticle: 'destroy'
     }),
-
     fetchData() {
       return this.fetchArticles();
     }
