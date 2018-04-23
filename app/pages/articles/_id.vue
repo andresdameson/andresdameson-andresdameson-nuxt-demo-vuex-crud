@@ -31,6 +31,10 @@ export default {
     AppLogo
   },
 
+  watch: {
+    $route: 'fetchData',
+  },
+
   computed: {
     ...mapGetters('articles', {
       articleById: 'byId'
@@ -43,8 +47,10 @@ export default {
     }
   },
 
-  watch: {
-    $route: 'fetchData',
+  async fetch ({ store, params }) {
+    await store.dispatch('articles/fetchSingle',{
+      id: params.id
+    })
   },
 
   methods: {
@@ -56,14 +62,8 @@ export default {
         id: this.route.params.id
       });
     }
-  },
-
-  async fetch ({ store, params }) {
-    await store.dispatch('articles/fetchSingle',{
-      id: params.id
-    })
   }
-};
+}
 </script>
 
 <style scoped>

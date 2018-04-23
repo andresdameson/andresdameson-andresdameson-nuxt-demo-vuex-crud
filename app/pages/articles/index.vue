@@ -35,6 +35,7 @@ export default {
   components: {
     AppLogo
   },
+
   computed: {
     ...mapGetters('articles', {
       articleList: 'list'
@@ -44,8 +45,8 @@ export default {
     ]),
   },
 
-  watch: {
-    $route: 'fetchData',
+  async fetch ({ store }) {
+    await store.dispatch('articles/fetchList')
   },
 
   methods: {
@@ -56,12 +57,8 @@ export default {
     fetchData() {
       return this.fetchArticles();
     }
-  },
-
-  async fetch ({ store }) {
-    await store.dispatch('articles/fetchList')
   }
-};
+}
 </script>
 
 <style scoped>

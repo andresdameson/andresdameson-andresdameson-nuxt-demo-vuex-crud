@@ -9,7 +9,7 @@
       </h2>
 
       <div class="article-container">
-        <form @submit.prevent="create()">
+        <form @submit.prevent="createNewArticle()">
           <fieldset>
             <div class="form-group">
               <label for="title">Title</label>
@@ -70,7 +70,7 @@ export default {
     ...mapActions('articles', {
       createArticle: 'create'
     }),
-    async create () {
+    async createNewArticle () {
       let res = await this.createArticle({
         data: {
           title: this.title,
@@ -82,9 +82,9 @@ export default {
       }else{
         alert('Ups, something has gone wrong')
       }
-    }
+    },
   }
-};
+}
 </script>
 
 <style scoped>

@@ -53,6 +53,10 @@ export default {
     AppLogo
   },
 
+  watch: {
+    $route: 'fetchData',
+  },
+
   data () {
     return {
       currentArticle: {
@@ -71,10 +75,26 @@ export default {
     ])
   },
 
+  async fetch ({ store, params }) {
+    await store.dispatch('articles/fetchSingle',{
+      id: params.id
+    })
+  },
+
+  async created () {
+    this.currentArticle = Object.assign({}, await this.articleById(this.$route.params.id))
+  },
+
   methods: {
     ...mapActions('articles', {
-      updateArticle: 'update'
+      updateArticle: 'update',
+      fetchArticle: 'fetchSingle'
     }),
+    fetchData() {
+      return this.fetchArticle({
+        id: this.route.params.id
+      });
+    },
     async update () {
       let res = await this.updateArticle({
         id: this.currentArticle.id,
@@ -86,16 +106,6 @@ export default {
         alert('Ups, something has gone wrong')
       }
     }
-  },
-
-  created () {
-    this.currentArticle = Object.assign({}, this.articleById(this.$route.params.id))
-  },
-
-  async fetch ({ store, params }) {
-    await store.dispatch('articles/fetchSingle',{
-      id: params.id
-    })
   }
 }
 </script>
