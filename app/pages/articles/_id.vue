@@ -12,6 +12,8 @@
         <article v-if="currentArticle">
           <h3>{{ currentArticle.title }}</h3>
           <p>{{ currentArticle.content }}</p>
+          <br>
+          <nuxt-link class="button--green" v-bind:to="{name: 'articles-edit-id', params:{id: currentArticle.id}}">Edit</nuxt-link>
         </article>
       </div>
     </div>
