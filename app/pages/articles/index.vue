@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <nuxt-link class="button--green back" v-bind:to="{name: 'index'}">Back </nuxt-link>
+    <nuxt-link class="button--green back" v-bind:to="{name: 'index'}">Back to home </nuxt-link>
   </section>
 </template>
 

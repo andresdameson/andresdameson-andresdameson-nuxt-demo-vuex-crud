@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <nuxt-link class="button--green back" v-bind:to="{name: 'articles'}">Back </nuxt-link>
+    <nuxt-link class="button--green back" v-bind:to="{name: 'articles'}">Back to list</nuxt-link>
   </section>
 </template>
 
